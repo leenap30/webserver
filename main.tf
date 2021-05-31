@@ -31,9 +31,7 @@ resource "aws_security_group" "webservers-ssh-http" {
 resource "aws_instance" "webservers" {
   ami               = "ami-077e31c4939f6a2f3"
   instance_type     = "t2.micro"
-  availability_zone = "us-east-2a"
   security_groups   = ["${aws_security_group.webservers-ssh-http.name}"]
-  key_name = "keyec2"
   user_data = <<-EOF
                 #! /bin/bash
                 sudo yum install httpd -y
